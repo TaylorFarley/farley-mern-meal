@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import MealTableRow from './MealTableRow';
-
+import Health from './health';
 
 export default class MealList extends Component {
 
@@ -11,6 +11,7 @@ export default class MealList extends Component {
     this.state = {
       meals: []
     };
+    this.healthyHandler = this.healthyHandler.bind(this)
   }
 
   componentDidMount() {
@@ -23,7 +24,7 @@ export default class MealList extends Component {
            
            let arr = res.data;           
            let xx = shuffle(arr)
-           console.log(xx[0])
+      
            //
           
           
@@ -40,15 +41,28 @@ export default class MealList extends Component {
   DataTable() {
     // console.log(this.state.meals)
     const dates = ['m','t','w','th','f','s','sn']
-    return this.state.meals.map((res, i) => {
-
+    return this.state.meals.map((res, i) => { 
+     
       return <MealTableRow day={dates[i]} obj={res} key={i} health={JSON.stringify(res.healthy)}/>;
     });
   }
 
 
+  healthyHandler() {
+    const dates = ['m','t','w','th','f','s','sn']
+    return this.state.meals.map((res, i) => { 
+      if(res.healthy)    
+      return <MealTableRow day={dates[i]} obj={res} key={i} health={JSON.stringify(res.healthy)}/>;
+    });
+}
+
+
+
   render() {
-    return (<div className="table-wrapper">
+    return (
+    
+    <div className="table-wrapper">
+     
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -62,7 +76,9 @@ export default class MealList extends Component {
         <tbody>
           {this.DataTable()}
         </tbody>
+     
       </Table>
+     <button onClick={this.healthyHandler}>CLICK ME</button>
     </div>);
   }
 }
