@@ -2,7 +2,7 @@ let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-
+let path = require('path')
 
 // Express Route
 const mealRoute = require('./routes/meal.route')
@@ -28,6 +28,16 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use('/meals', mealRoute)
 
+//
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
+
+app.use(express.static(path.join(__dirname, "client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 // PORT
 const port = process.env.PORT || 4000;
