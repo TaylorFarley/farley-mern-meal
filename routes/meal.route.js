@@ -18,8 +18,7 @@ router.route('/create-meal').post((req, res, next) => {
 });
 
 // READ meals
-router.get('/', (req, res) => {
-
+router.route('/').get((req, res) => {
   mealSchema.find((error, data) => {
     if (error) {
       return next(error)
@@ -29,11 +28,7 @@ router.get('/', (req, res) => {
       console.log(data)
     }
   })
-});
-
-
-
-
+})
 
 // Get Single meal
 router.route('/edit-meal/:id').get((req, res) => {
