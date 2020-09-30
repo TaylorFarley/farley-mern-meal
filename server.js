@@ -30,11 +30,13 @@ app.use('/meals', mealRoute)
 
 
 // PORT
-const port = process.env.PORT || 4000;
-const server = app.listen(port, () => {
-  console.log('Connected to port ' + port)
-})
 
+const port = process.env.PORT || 4000;
+
+
+app.listen(port, () => {
+  console.log('we are RUNNIN')
+})
 // 404 Error
 app.use((req, res, next) => {
   next(createError(404));
