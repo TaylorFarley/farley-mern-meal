@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+
 
 
 export default class MealTableRow extends Component {
-    
+    constructor(props) {
+        super(props);
+        this.deleteMeal = this.deleteMeal.bind(this);
+    }
+
+    deleteMeal() {
+        axios.delete('http://localhost:4000/meals/delete-meal/' + this.props.obj._id)
+            .then((res) => {
+                console.log('Meal successfully deleted!')
+                this.props.init()
+            }).catch((error) => {
+                console.log(error)
+            })
+    }
+
+
+
     render() {
         return (
          
@@ -16,8 +35,9 @@ export default class MealTableRow extends Component {
                 <td>
                     <Link className="edit-link" to={"/edit-meal/" + this.props.obj._id}>
                         Edit
+                     
                     </Link>
-                    <Button size="sm" variant="danger">Delete</Button>
+                    <Button onClick={this.deleteMeal} size="sm" variant="danger">Delete</Button>
                 </td>
             </tr>
         );

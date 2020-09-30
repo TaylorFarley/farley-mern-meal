@@ -11,16 +11,18 @@ export default class MealList extends Component {
     this.state = {
       meals: [],
       checkme: false,
-      buttonValue: true,    
+      buttonValue: true,   
+      init: false 
     };
     this.healthyHandler = this.healthyHandler.bind(this)
- 
+    this.init = this.init.bind(this)
   }
 
 
 
 
   componentDidMount() {
+ 
     axios.get('http://localhost:4000/meals/')
       .then(res => {         
           function shuffle(array) {
@@ -29,7 +31,8 @@ export default class MealList extends Component {
            let arr = res.data;           
            let xx = shuffle(arr)
           this.setState({
-          meals: xx       
+          meals: xx  
+               
         });
       })
       .catch((error) => {
@@ -37,7 +40,17 @@ export default class MealList extends Component {
       })
 
   }
+  
+
+
  
+
+
+
+
+
+
+
   DataTable() {
 
     const dates = ['m','t','w','th','f','s','sn']
