@@ -18,6 +18,7 @@ router.route('/create-meal').post((req, res, next) => {
   })
 });
 
+
 // READ meals
 router.route('/').get((req, res) => {
   mealSchema.find((error, data) => {
