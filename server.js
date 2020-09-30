@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
-app.use('/', mealRoute)
+app.use('/Meals', mealRoute)
 
 
 // PORT
