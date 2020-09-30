@@ -3,16 +3,13 @@ const Schema = mongoose.Schema;
 
 let mealSchema = new Schema({
   name: {
-    type: String,
-    required: true
+    type: String
   },
   ingredients: {
-    type: String,
-    required: true
+    type: String
   },
   healthy: {
-    type: Boolean,
-    required: true
+    type: Boolean
   }
 }, {
     collection: 'meals'

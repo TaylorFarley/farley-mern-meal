@@ -3,14 +3,13 @@ let mongoose = require('mongoose'),
   router = express.Router();
 
 // meal Model
-let mealSchema = require('../models/meals');
+let mealSchema = require('../models/Meals');
 
 // CREATE meal
 router.route('/create-meal').post((req, res, next) => {
   mealSchema.create(req.body, (error, data) => {
     if (error) {
       return next(error)
-      
     } else {
       console.log(data)
       res.json(data)
@@ -18,13 +17,11 @@ router.route('/create-meal').post((req, res, next) => {
   })
 });
 
-
 // READ meals
 router.route('/').get((req, res) => {
   mealSchema.find((error, data) => {
     if (error) {
       return next(error)
-      
     } else {
       
       res.json(data)   
@@ -32,8 +29,6 @@ router.route('/').get((req, res) => {
     }
   })
 })
-
-
 
 // Get Single meal
 router.route('/edit-meal/:id').get((req, res) => {
