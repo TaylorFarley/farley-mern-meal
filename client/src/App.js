@@ -21,7 +21,9 @@ function App() {
           <Container>
 
             <Navbar.Brand>
+            
               <Link to={"/create-meal"} className="nav-link">
+              <img src="./img/icon.png"></img>
                 FoodPlan.io
               </Link>
             </Navbar.Brand>

@@ -16,7 +16,7 @@ export default class MealTableRow extends Component {
         axios.delete('http://localhost:4000/meals/delete-meal/' + this.props.obj._id)
             .then((res) => {
                 console.log('Meal successfully deleted!')
-                this.props.init()
+              
             }).catch((error) => {
                 console.log(error)
             })

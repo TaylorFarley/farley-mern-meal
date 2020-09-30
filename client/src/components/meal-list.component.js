@@ -15,7 +15,7 @@ export default class MealList extends Component {
       init: false 
     };
     this.healthyHandler = this.healthyHandler.bind(this)
-    this.init = this.init.bind(this)
+
   }
 
 

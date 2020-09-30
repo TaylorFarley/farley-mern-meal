@@ -2,14 +2,15 @@ let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-let dbConfig = require('./database/db');
+
 
 // Express Route
 const mealRoute = require('./routes/meal.route')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db, {
+
+mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -33,6 +34,7 @@ app.use('/meals', mealRoute)
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
+  console.log(process.env.DB)
 })
 
 // 404 Error
