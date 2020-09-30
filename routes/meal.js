@@ -3,7 +3,7 @@ let mongoose = require('mongoose'),
   router = express.Router();
 
 // meal Model
-let mealSchema = require('../Models/Meals');
+let mealSchema = require('../models/meals');
 
 // CREATE meal
 router.route('/create-meal').post((req, res, next) => {

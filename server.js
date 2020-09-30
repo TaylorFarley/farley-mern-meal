@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 
 
 // Express Route
-const mealRoute = require('./routes/meal.route')
+const mealRoute = require('./routes/meal')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
-app.use('/Meals', mealRoute)
+app.use('/meal', mealRoute)
 
 
 // PORT
