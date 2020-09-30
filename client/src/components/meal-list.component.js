@@ -23,7 +23,7 @@ export default class MealList extends Component {
 
   componentDidMount() {
  
-    axios.get('http://localhost:4000/meals/')
+    axios.get('meals/')
       .then(res => {         
           function shuffle(array) {
             return array.sort(() => Math.random() - 0.5);

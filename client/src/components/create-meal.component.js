@@ -47,7 +47,7 @@ constructor(props) {
         ingredients: this.state.ingredients,
         healthy: this.state.healthy
       };
-      axios.post('http://localhost:4000/meals/create-meal', mealObject)
+      axios.post('meals/create-meal', mealObject)
         .then(res => console.log(res.data));
 
 
