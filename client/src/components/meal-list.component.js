@@ -11,10 +11,10 @@ export default class MealList extends Component {
     this.state = {
       meals: [],
       checkme: false,
-      buttonValue: true
+      buttonValue: true,    
     };
     this.healthyHandler = this.healthyHandler.bind(this)
-  
+ 
   }
 
 
@@ -65,7 +65,9 @@ export default class MealList extends Component {
            buttonValue: !prevState.buttonValue
       }
    })
-}
+  }
+
+ 
 
 
 
@@ -73,7 +75,7 @@ export default class MealList extends Component {
     return (
 
     <div className="table-wrapper">
- <button onClick={this.healthyHandler}>{this.state.buttonValue? 'Show Me Healthy': 'Show Everything Else'}</button>
+    <button onClick={this.healthyHandler}>{this.state.buttonValue? 'Show Me Healthy': 'Show Everything Else'}</button>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -89,7 +91,7 @@ export default class MealList extends Component {
         </tbody>
 
       </Table>
-    
+
     </div>);
   }
 }
