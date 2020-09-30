@@ -32,18 +32,7 @@ router.route('/').get((req, res) => {
   })
 })
 
-router.route('/meals').get((req, res) => {
-  mealSchema.find((error, data) => {
-    if (error) {
-      return next(error)
-      
-    } else {
-      
-      res.json(data)   
-      console.log(data)
-    }
-  })
-})
+
 
 // Get Single meal
 router.route('/edit-meal/:id').get((req, res) => {
