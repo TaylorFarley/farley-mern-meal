@@ -41,7 +41,7 @@ export default class MealTableRow extends Component {
                 <td>{this.props.day}</td>
                 <td>{this.props.obj.name}</td>
                 <td>{this.props.obj.ingredients}</td>
-                <td>{this.props.health}</td>
+                <td>{this.props.health? 'Yes': 'No'}</td>
                 <td>
                     <Link className="edit-link" to={"/edit-meal/" + this.props.obj._id}>
                         Edit

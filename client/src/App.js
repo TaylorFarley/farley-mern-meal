@@ -23,7 +23,7 @@ function App() {
             <Navbar.Brand>
             
               <Link to={"/create-meal"} className="nav-link">
-              <img src="./img/icon.png"></img>
+              <img src="./img/icon.png" alt="farley-foodmelogo"></img>
                 FoodPlan.io
               </Link>
             </Navbar.Brand>

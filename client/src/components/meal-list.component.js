@@ -59,13 +59,13 @@ export default class MealList extends Component {
     {
     return this.state.meals.map((res, i) => { 
       if (this.state.checkme==res.healthy)
-      return <MealTableRow day={dates[i]} obj={res} key={i} health={JSON.stringify(res.healthy)}/>;
+      return <MealTableRow day={dates[i]} obj={res} key={i} health={res.healthy}/>;
     });
     }
     else
     {
       return this.state.meals.map((res, i) => { 
-             return <MealTableRow day={dates[i]} obj={res} key={i} health={JSON.stringify(res.healthy)}/>;
+             return <MealTableRow day={dates[i]} obj={res} key={i} health={res.healthy}/>;
       }); 
     }
   }
