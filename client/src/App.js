@@ -17,21 +17,21 @@ function App() {
   return (<Router>
     <div className="App">
       <header className="App-header">
-        <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark">
           <Container>
 
             <Navbar.Brand>
             
               <Link to={"/create-meal"} className="nav-link">
               <img src="./img/icon.png" alt="farley-foodmelogo"></img>
-                FoodPlan.io
+                FoodPlan
               </Link>
             </Navbar.Brand>
 
             <Nav className="justify-content-end">
               <Nav>
                 <Link to={"/create-meal"} className="nav-link">
-                  Create meal
+                  Create Meal
                 </Link>
               </Nav>
 
@@ -43,7 +43,7 @@ function App() {
 
               <Nav>
                 <Link to={"/meal-list"} className="nav-link">
-                meal List
+                Meal List
                 </Link>
               </Nav>
             </Nav>
