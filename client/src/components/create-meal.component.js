@@ -11,12 +11,13 @@ constructor(props) {
     this.onChangeMealIngredients = this.onChangeMealIngredients.bind(this);
     this.onChangeMealHealthy = this.onChangeMealHealthy.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
+    this.ChangeStatus = this.ChangeStatus.bind(this)
     // Setting up state
     this.state = {
       name: '',
       ingredients: '',
-      healthy: false
+      healthy: false,
+      status: false,
     }
   }
 
@@ -29,9 +30,11 @@ constructor(props) {
   }
 
   onChangeMealHealthy(e) {
-    this.setState({healthy: !this.state.healthy})
- 
-    
+    this.setState({healthy: !this.state.healthy})    
+  }
+
+  ChangeStatus(){
+    this.setState({status: false})
   }
  
   onSubmit(e) {
@@ -53,8 +56,19 @@ constructor(props) {
 
 
 
-    this.setState({name: '', ingredients: '', healthy: false})
-    
+   
+    this.setState(prevState =>{
+      return{
+           ...prevState,
+           name: '', 
+           ingredients: '',
+           healthy: false,
+           status: !prevState.status
+      }
+   })
+
+
+
   }
 
   render() {
@@ -62,12 +76,12 @@ constructor(props) {
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="Name">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={this.state.name} onChange={this.onChangeMealName}/>
+          <Form.Control autocomplete="off" type="text" value={this.state.name} onChange={this.onChangeMealName} onClick={this.ChangeStatus}/>
         </Form.Group>
 
         <Form.Group controlId="Ingredients">
           <Form.Label>Ingredients</Form.Label>
-          <Form.Control type="text" value={this.state.ingredients} onChange={this.onChangeMealIngredients}/>
+          <Form.Control autocomplete="off" type="text" value={this.state.ingredients} onChange={this.onChangeMealIngredients}/>
         </Form.Group>
 
         <Form.Group controlId="Name">
@@ -78,6 +92,7 @@ constructor(props) {
         <Button variant="danger" size="lg" block="block" type="submit">
           Create Meal
         </Button>
+        {this.state.status? 'Added' : ''}
       </Form>
     </div>);
   }
