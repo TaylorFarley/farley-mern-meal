@@ -7,6 +7,7 @@ let path = require('path')
 // Express Route
 const mealRoute = require('./routes/meal.route')
 
+
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB, {
@@ -29,9 +30,7 @@ app.use(cors());
 app.use('/meals', mealRoute)
 
 //
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
+
 
 
 app.use(express.static(path.join(__dirname, "client/build")));
@@ -46,12 +45,12 @@ app.listen(port, () => {
 })
 
 // 404 Error
-// app.use((req, res, next) => {
-//   next(createError(404));
-// });
+app.use((req, res, next) => {
+  next(createError(404));
+});
 
-// app.use(function (err, req, res, next) {
-//   console.error(err.message);
-//   if (!err.statusCode) err.statusCode = 500;
-//   res.status(err.statusCode).send(err.message);
-// });
+app.use(function (err, req, res, next) {
+  console.error(err.message);
+  if (!err.statusCode) err.statusCode = 500;
+  res.status(err.statusCode).send(err.message);
+});

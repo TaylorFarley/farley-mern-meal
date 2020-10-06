@@ -13,8 +13,10 @@ import CreateMeal from "./components/create-meal.component";
 import EditMeal from "./components/edit-meal.component";
 import MealList from "./components/meal-list.component";
 
+
 function App() {
   return (<Router>
+    
     <div className="App">
       <header className="App-header">
       <Navbar bg="dark" variant="dark">
@@ -46,7 +48,13 @@ function App() {
                 Meal List
                 </Link>
               </Nav>
+
+            
+
+
             </Nav>
+
+            
 
           </Container>
         </Navbar>
@@ -61,6 +69,7 @@ function App() {
                 <Route path="/create-meal" component={CreateMeal} />
                 <Route path="/edit-meal/:id" component={EditMeal} />
                 <Route path="/meal-list" component={MealList} />
+              
               </Switch>
             </div>
           </Col>
