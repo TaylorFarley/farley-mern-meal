@@ -96,7 +96,7 @@ function App() {
               
               {userData.user ? (
              <Nav>
-             <a href="/#" onClick={Logout} className="nav-link">Logout</a>
+             <a href="#" onClick={Logout} className="nav-link">Logout</a>
             
            
            </Nav>
