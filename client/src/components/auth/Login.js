@@ -17,7 +17,7 @@ export default function Login() {
     try {
       const loginUser = { email, password };
       const loginRes = await Axios.post(
-        "/users/login",
+        "users/login",
         loginUser
       );
       setUserData({
