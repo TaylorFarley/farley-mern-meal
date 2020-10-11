@@ -36,7 +36,7 @@ constructor(props) {
           this.setState({
             id: userres.data.id
           })
-          console.log(userres.data)
+        
         })      
       }
     })
@@ -94,28 +94,43 @@ constructor(props) {
   }
 
   render() {
-    return (<div className="form-wrapper">
-      <Form onSubmit={this.onSubmit}>
-        <Form.Group controlId="Name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control autoComplete="off" type="text" value={this.state.name} onChange={this.onChangeMealName} onClick={this.ChangeStatus}/>
-        </Form.Group>
 
-        <Form.Group controlId="Ingredients">
-          <Form.Label>Ingredients</Form.Label>
-          <Form.Control autoComplete="off" type="text" value={this.state.ingredients} onChange={this.onChangeMealIngredients}/>
-        </Form.Group>
+  
 
-        <Form.Group controlId="Name">
-          <Form.Label>IsHealthy</Form.Label>
-          <Form.Control type="checkbox"  checked={this.state.healthy} onChange={this.onChangeMealHealthy}/>
-        </Form.Group>
 
-        <Button variant="danger" size="lg" block="block" type="submit">
-          Create Meal
-        </Button>
-        {this.state.status? 'Added' : ''}
-      </Form>
+
+    return (
+    
+    <div className="form-wrapper">
+      {this.state.id ? (
+         <Form onSubmit={this.onSubmit}>
+         <Form.Group controlId="Name">
+           <Form.Label>Name</Form.Label>
+           <Form.Control autoComplete="off" type="text" value={this.state.name} onChange={this.onChangeMealName} onClick={this.ChangeStatus}/>
+         </Form.Group>
+ 
+         <Form.Group controlId="Ingredients">
+           <Form.Label>Ingredients</Form.Label>
+           <Form.Control autoComplete="off" type="text" value={this.state.ingredients} onChange={this.onChangeMealIngredients}/>
+         </Form.Group>
+ 
+         <Form.Group controlId="Name">
+           <Form.Label>IsHealthy</Form.Label>
+           <Form.Control type="checkbox"  checked={this.state.healthy} onChange={this.onChangeMealHealthy}/>
+         </Form.Group>
+ 
+         <Button variant="danger" size="lg" block="block" type="submit">
+           Create Meal
+         </Button>
+         {this.state.status? 'Added' : ''}
+       </Form>
+      ) : (
+        <>
+          Please login
+        </>
+      )}
+     
     </div>);
   }
 }
+

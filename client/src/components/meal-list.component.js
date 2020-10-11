@@ -12,7 +12,7 @@ export default class MealList extends Component {
       meals: [],
       checkme: false,
       buttonValue: true,   
-      init: false 
+      init: undefined 
     };
     this.healthyHandler = this.healthyHandler.bind(this)
 
@@ -23,7 +23,17 @@ export default class MealList extends Component {
 
   componentDidMount() {
  
-    axios.get('meals/')
+
+    let token = localStorage.getItem("auth-token");
+    axios.post('users/tokenIsValid',null,
+    { headers: { "x-auth-token": token } }
+    )
+    .then(res => {  
+      if(res.data){
+        this.setState({
+          init: true
+        })
+      axios.get('meals/')
       .then(res => {         
           function shuffle(array) {
             return array.sort(() => Math.random() - 0.5);
@@ -37,8 +47,9 @@ export default class MealList extends Component {
       })
       .catch((error) => {
         console.log(error);
-      })
-
+      })  
+      }    
+    })
   }
   
 
@@ -58,7 +69,7 @@ export default class MealList extends Component {
     if(this.state.checkme)
     {
     return this.state.meals.map((res, i) => { 
-      if (this.state.checkme==res.healthy)
+      if (this.state.checkme===res.healthy)
       return <MealTableRow day={dates[i]} obj={res} key={i} health={res.healthy}/>;
     });
     }
@@ -86,24 +97,29 @@ export default class MealList extends Component {
 
   render() {
     return (
-
+   
     <div className="table-wrapper">
-    <button onClick={this.healthyHandler}>{this.state.buttonValue? 'Show Me Healthy': 'Show Everything Else'}</button>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Ingredients</th>
-            <th>Healthy</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.DataTable()}
-        </tbody>
-
-      </Table>
+   {this.state.init?
+        (<> <button onClick={this.healthyHandler}>{this.state.buttonValue? 'Show Me Healthy': 'Show Everything Else'}</button>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Ingredients</th>
+              <th>Healthy</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.DataTable()}
+          </tbody>
+  
+        </Table></>)
+        :
+        (<>Please Log In</>)
+      }
+   
 
     </div>);
   }
