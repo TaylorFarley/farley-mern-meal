@@ -13,9 +13,9 @@ export default function Login() {
   const history = useHistory();
 
   const submit = async (e) => {
+    console.log('is this showing up?')
     e.preventDefault();
-    try {
-      console.log('is this showing up?')
+    try {    
       const loginUser = { email, password };
       const loginRes = await Axios.post(
         "users/login",
