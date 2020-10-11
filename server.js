@@ -6,6 +6,7 @@ let path = require('path')
 
 // Express Route
 const mealRoute = require('./routes/meal.route')
+const userRoute = require('./routes/user.route')
 
 
 // Connecting mongoDB Database
@@ -28,7 +29,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 app.use('/meals', mealRoute)
-
+app.use('/users', userRoute)
 //
 
 

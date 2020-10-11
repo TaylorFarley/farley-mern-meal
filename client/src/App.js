@@ -11,7 +11,7 @@ import UserContext from "./context/UserContext";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AuthOptions from "./components/auth/AuthOptions";
+
 import CreateMeal from "./components/create-meal.component";
 import EditMeal from "./components/edit-meal.component";
 import MealList from "./components/meal-list.component";
@@ -30,12 +30,12 @@ function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:4000/users/tokenIsValid",
+        "users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:4000/users/", {
+        const userRes = await Axios.get("users/", {
           headers: { "x-auth-token": token },
         });
         setUserData({
@@ -51,9 +51,11 @@ function App() {
 
   let Logout = () => {
     console.log('hi')
+    console.log(userData.user)
     setUserData({
       token: undefined,
       user: undefined,
+      email: undefined
     });
     localStorage.setItem("auth-token", "");
   };

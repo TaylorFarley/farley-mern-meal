@@ -19,14 +19,15 @@ export default function Register() {
 
     try {
       const newUser = { email, password, passwordCheck, displayName };
-      await Axios.post("http://localhost:4000/users/register", newUser);
-      const loginRes = await Axios.post("http://localhost:4000/users/login", {
+      await Axios.post("/users/register", newUser);
+      const loginRes = await Axios.post("/users/login", {
         email,
         password,
       });
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
+        email: loginRes.data.email,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
       history.push("/");
