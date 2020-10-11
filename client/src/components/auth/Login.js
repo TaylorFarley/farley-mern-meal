@@ -15,6 +15,7 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault();
     try {
+      console.log('is this showing up?')
       const loginUser = { email, password };
       const loginRes = await Axios.post(
         "users/login",
