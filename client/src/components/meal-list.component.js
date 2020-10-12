@@ -64,7 +64,7 @@ export default class MealList extends Component {
 
   DataTable() {
 
-    const dates = ['m','t','w','th','f','s','sn']
+    const dates = ['Mon','Tues','Weds','Thurs','Fri','Sat','Sun']
 
     if(this.state.checkme)
     {
