@@ -50,8 +50,7 @@ function App() {
 
 
   let Logout = () => {
-    console.log('hi')
-    console.log(userData.user)
+  
     setUserData({
       token: undefined,
       user: undefined,
@@ -96,7 +95,7 @@ function App() {
               
               {userData.user ? (
              <Nav>
-             <a href="#" onClick={Logout} className="nav-link">Logout</a>
+             <a href="/#" onClick={Logout} className="nav-link">Logout</a>
             
            
            </Nav>

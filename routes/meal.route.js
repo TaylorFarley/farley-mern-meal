@@ -25,7 +25,7 @@ router.route('/').get((req, res) => {
     } else {
       
       res.json(data)   
-      console.log(data)
+    
     }
   })
 })
@@ -57,9 +57,7 @@ router.route('/update-meal/:id').put((req, res, next) => {
   })
 })
 
-router.route('/admin').get((req, res) => {
-  res.send('hi!')
-  })
+
   
 // Delete meal
 router.route('/delete-meal/:id').delete((req, res, next) => {
