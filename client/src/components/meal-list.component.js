@@ -12,7 +12,8 @@ export default class MealList extends Component {
       meals: [],
       checkme: false,
       buttonValue: true,   
-      init: undefined 
+      LoggedIn: undefined,
+      token: undefined
     };
     this.healthyHandler = this.healthyHandler.bind(this)
 
@@ -22,16 +23,21 @@ export default class MealList extends Component {
 
 
   componentDidMount() {
- 
-
+    
+    
     let token = localStorage.getItem("auth-token");
+    this.setState({
+      token: token
+    })
+   
     axios.post('users/tokenIsValid',null,
     { headers: { "x-auth-token": token } }
     )
     .then(res => {  
       if(res.data){
         this.setState({
-          init: true
+          LoggedIn: true
+
         })
       axios.get('meals/')
       .then(res => {         
@@ -99,7 +105,7 @@ export default class MealList extends Component {
     return (
    
     <div className="table-wrapper">
-   {this.state.init?
+   {this.state.LoggedIn&&this.state.token?
         (<> <button onClick={this.healthyHandler}>{this.state.buttonValue? 'Show Me Healthy': 'Show Everything Else'}</button>
         <Table striped bordered hover>
           <thead>

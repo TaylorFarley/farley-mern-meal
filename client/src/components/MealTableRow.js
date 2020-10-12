@@ -19,6 +19,7 @@ export default class MealTableRow extends Component {
         axios.delete('meals/delete-meal/' + this.props.obj._id)
             .then((res) => {
                 console.log('Meal successfully deleted!')
+                
                 //set up my button
                 this.setState(prevState =>{
                     return{

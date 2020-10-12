@@ -19,11 +19,15 @@ constructor(props) {
       ingredients: '',
       healthy: false,
       status: false,
+      token: undefined
     }
   }
 
   componentDidMount(){
     let token = localStorage.getItem("auth-token");
+    this.setState({
+      token: token
+    })
     axios.post('users/tokenIsValid',null,
     { headers: { "x-auth-token": token } }
     )
@@ -97,7 +101,7 @@ constructor(props) {
     return (
     
     <div className="form-wrapper">
-      {this.state.id ? (
+      {this.state.id&&this.state.token ? (
          <Form onSubmit={this.onSubmit}>
          <Form.Group controlId="Name">
            <Form.Label>Name</Form.Label>
